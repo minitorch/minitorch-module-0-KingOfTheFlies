@@ -188,6 +188,7 @@ def map(fn: Callable[[float], float]) -> Callable[[Iterable[float]], Iterable[fl
         return [fn(l) for l in lst]
     return map_fn
 
+
 def zipWith(fn: Callable[[float, float], float]) -> Callable[[Iterable[float], Iterable[float]], Iterable[float]]:
     """
     Higher-order zipwith.
@@ -205,6 +206,7 @@ def zipWith(fn: Callable[[float, float], float]) -> Callable[[Iterable[float], I
 
     return zipWith_fn
 
+
 def reduce(fn: Callable[[float, float], float], start: float) -> Callable[[Iterable[float]], float]:
     r"""
     Higher-order reduce.
@@ -217,12 +219,11 @@ def reduce(fn: Callable[[float, float], float], start: float) -> Callable[[Itera
          Function that takes a list lst of elements
          x_1 ... x_n and computes the reduction fn(x_3, fn(x_2,fn(x_1, x_0)))`
     """
-    def reduce_fn(ls: Iterable[float]):
-        cur = start
-        for el in ls:
-            cur = fn(el, cur)
-        return cur
-
+    def reduce_fn(ls: Iterable[float]) -> float:
+        result = start
+        for item in ls:
+            result = fn(item, result)
+        return result
     return reduce_fn
 
 

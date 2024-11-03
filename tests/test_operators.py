@@ -142,7 +142,7 @@ def test_distribute(x: float, y: float, z: float) -> None:
     :math:`z \times (x + y) = z \times x + z \times y`
     """
     # TODO: Implement for Task 0.2.
-    assert assert_close(mul(z, add(x, y)), add(mul(z, x), mul(z, y)))
+    assert_close(mul(add(x, y), z), add(mul(z, x), mul(z, y)))
 
 
 @pytest.mark.task0_2
