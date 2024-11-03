@@ -32,6 +32,7 @@ class Module:
     def train(self) -> None:
         """Set the mode of this module and all descendent modules to `train`."""
         # TODO: Implement for Task 0.4.
+        self.training = True
         for _, child in self._modules.items():
             child.train()
 

@@ -119,7 +119,10 @@ def test_sigmoid(a: float) -> None:
 def test_transitive(a: float, b: float, c: float) -> None:
     """Test the transitive property of less-than (a < b and b < c implies a < c)"""
     # TODO: Implement for Task 0.2.
-    assert (lt(a, b) and lt(b, c)) < lt(a, c)
+    if lt(a, b) and lt(b, c):
+        assert lt(a, c) == 1.
+    else:
+        pass
 
 
 @pytest.mark.task0_2
@@ -139,10 +142,11 @@ def test_distribute(x: float, y: float, z: float) -> None:
     :math:`z \times (x + y) = z \times x + z \times y`
     """
     # TODO: Implement for Task 0.2.
-    assert assert_close(mul(z, add(x, y)), mul(z, x) + mul(z, y))
+    assert assert_close(mul(z, add(x, y)), add(mul(z, x), mul(z, y)))
 
 
 @pytest.mark.task0_2
+@given(small_floats)
 def test_other(x: float) -> None:
     """Write a test that ensures some other property holds for your functions."""
     # TODO: Implement for Task 0.2.
